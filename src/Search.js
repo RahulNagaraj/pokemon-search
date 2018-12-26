@@ -19,21 +19,20 @@ class Search extends Component {
       pokeText: val,
     });
   };
-  searchPoke = () => {
+  searchPoke = async () => {
     const { pokeText } = this.state;
     if (pokeText.length > 0) {
       const pokeName = pokeText.toLowerCase();
       this.setState({ isFetching: true });
-
-      axios
-        .get(`${pokemonAPIURL}/${pokeName}`)
-        .then(res => {
-          this.setState({
-            pokeData: res.data,
-            isFetching: false,
-          });
-        })
-        .catch(e => console.error("Error fetching pokemon: ", e));
+      try {
+        const response = await axios.get(`${pokemonAPIURL}/${pokeName}`);
+        this.setState({
+          pokeData: response.data,
+          isFetching: false,
+        });
+      } catch (e) {
+        console.error("Error fetching pokemon: ", e.message);
+      }
     }
   };
   renderHeader = () => {
