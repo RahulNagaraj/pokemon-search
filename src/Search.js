@@ -3,10 +3,12 @@ import { StyleSheet, Text, View } from "react-native";
 import { Header, Input, Icon, Item } from "native-base";
 
 import Loader from "./Loader";
+import PokeList from "./PokeList";
 
 class Search extends Component {
   state = {
     pokeText: "",
+    isFetching: false,
   };
   setPokemonText = val => {
     this.setState({
@@ -30,11 +32,8 @@ class Search extends Component {
     );
   };
   renderBody = () => {
-    return (
-      <View>
-        <Loader />
-      </View>
-    );
+    const { isFetching } = this.state;
+    return <View>{isFetching ? <Loader /> : <PokeList />}</View>;
   };
   render() {
     return (
