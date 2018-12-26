@@ -51,8 +51,12 @@ class Search extends Component {
     );
   };
   renderBody = () => {
-    const { isFetching } = this.state;
-    return <View>{isFetching ? <Loader /> : <PokeList />}</View>;
+    const { isFetching, pokeData } = this.state;
+    return (
+      <View>
+        {isFetching ? <Loader /> : <PokeList pokeDetails={pokeData} />}
+      </View>
+    );
   };
   render() {
     return (
