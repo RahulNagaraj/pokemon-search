@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, Platform } from "react-native";
 
 import Landing from "./src/Landing";
+import Search from "./src/Search";
 
 export default class App extends React.Component {
   state = {
@@ -16,7 +17,7 @@ export default class App extends React.Component {
       case "landing":
         return <Landing switchScreen={this.switchScreen} />;
       case "search":
-        return null;
+        return <Search />;
       default:
         break;
     }
