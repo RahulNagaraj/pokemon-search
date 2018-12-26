@@ -21,20 +21,33 @@ class Search extends Component {
     });
   };
   searchPoke = () => {};
-  render() {
+  renderHeader = () => {
     const { pokeText } = this.state;
     return (
+      <Header searchBar rounded>
+        <Item>
+          <Icon name="ios-search" onPress={this.searchPoke} />
+          <Input
+            value={pokeText}
+            placeholder="Search Pokemon"
+            onChangeText={this.setPokemonText}
+          />
+        </Item>
+      </Header>
+    );
+  };
+  renderBody = () => {
+    return (
       <View>
-        <Header searchBar rounded>
-          <Item>
-            <Icon name="ios-search" onPress={this.searchPoke} />
-            <Input
-              value={pokeText}
-              placeholder="Search Pokemon"
-              onChangeText={this.setPokemonText}
-            />
-          </Item>
-        </Header>
+        <Text>Hello World!</Text>
+      </View>
+    );
+  };
+  render() {
+    return (
+      <View style={styles.searchContainer}>
+        {this.renderHeader()}
+        {this.renderBody()}
       </View>
     );
   }
