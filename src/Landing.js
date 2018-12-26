@@ -6,6 +6,7 @@ const backgroundImage = require("../assets/landing.jpg");
 
 class Landing extends Component {
   render() {
+    const { switchScreen } = this.props;
     return (
       <View>
         <ImageBackground source={backgroundImage} style={styles.imageStyle}>
@@ -14,7 +15,7 @@ class Landing extends Component {
             <Button
               style={styles.buttonStyle}
               block={true}
-              onPress={() => alert("started")}
+              onPress={() => switchScreen("search")}
             >
               <Text style={styles.buttonText}>Start Searching...</Text>
             </Button>
