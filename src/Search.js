@@ -8,7 +8,7 @@ import PokeList from "./PokeList";
 class Search extends Component {
   state = {
     pokeText: "",
-    isFetching: false,
+    isFetching: true,
   };
   setPokemonText = val => {
     this.setState({
