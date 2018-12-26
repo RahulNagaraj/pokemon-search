@@ -1,21 +1,41 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Header, Input, Icon, Item } from "native-base";
+import axios from "axios";
 
 import Loader from "./Loader";
 import PokeList from "./PokeList";
 
+const pokemonAPIURL = "https://pokeapi.co/api/v2/pokemon";
+
 class Search extends Component {
   state = {
     pokeText: "",
-    isFetching: true,
+    pokeData: {},
+    isFetching: false,
   };
   setPokemonText = val => {
     this.setState({
       pokeText: val,
     });
   };
-  searchPoke = () => {};
+  searchPoke = () => {
+    const { pokeText } = this.state;
+    if (pokeText.length > 0) {
+      const pokeName = pokeText.toLowerCase();
+      this.setState({ isFetching: true });
+
+      axios
+        .get(`${pokemonAPIURL}/${pokeName}`)
+        .then(res => {
+          this.setState({
+            pokeData: res.data,
+            isFetching: false,
+          });
+        })
+        .catch(e => console.error("Error fetching pokemon: ", e));
+    }
+  };
   renderHeader = () => {
     const { pokeText } = this.state;
     return (
