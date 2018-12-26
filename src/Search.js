@@ -1,15 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import {
-  Header,
-  Input,
-  Icon,
-  Button,
-  Item,
-  Left,
-  Body,
-  Title,
-} from "native-base";
+import { Header, Input, Icon, Item } from "native-base";
 
 class Search extends Component {
   state = {
