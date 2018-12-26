@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Header, Input, Icon, Item } from "native-base";
 
+import Loader from "./Loader";
+
 class Search extends Component {
   state = {
     pokeText: "",
@@ -30,7 +32,7 @@ class Search extends Component {
   renderBody = () => {
     return (
       <View>
-        <Text>Hello World!</Text>
+        <Loader />
       </View>
     );
   };
